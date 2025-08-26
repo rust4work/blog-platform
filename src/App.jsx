@@ -1,9 +1,14 @@
 // import { useState } from "react";
+import BannerDefault from "./components/BannerDefault";
 
 import "./App.css";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <BannerDefault />
+    </>
+  );
 }
 
 export default App;
