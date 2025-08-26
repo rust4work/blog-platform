@@ -15,4 +15,18 @@
   width: 1097px;
   height: 190px;
   background-color: #61bb61;
+  color: aliceblue;
+  align-content: space-around;
+  box-shadow: inset 0px 0px 24px 0px rgba(0, 0, 0, 0.4);
+}
+
+.bannerDefault--header {
+  margin: 0;
+  font-weight: 700;
+  font-size: 56px;
+}
+.bannerDefault--description {
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
 }

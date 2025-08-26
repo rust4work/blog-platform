@@ -4,8 +4,10 @@ function BannerDefault() {
   return (
     <div>
       <div className="bannerDefault--wrapper">
-        <h1>RealWorld Blog</h1>
-        <h4>A place to share your knowledge.</h4>
+        <h1 className="bannerDefault--header">RealWorld Blog</h1>
+        <h3 className="bannerDefault--description">
+          A place to share your knowledge.
+        </h3>
       </div>
     </div>
   );

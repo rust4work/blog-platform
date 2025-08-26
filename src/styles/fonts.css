@@ -1,13 +1,15 @@
 @font-face {
   font-family: "titi";
-  src: url("../assets/fonts/Titillium_Web/TitilliumWeb-Black.ttf") format("ttf");
+  src: url("../assets/fonts/Titillium_Web/TitilliumWeb-Black.ttf")
+    format("truetype");
   font-weight: 900; /* black */
   font-style: normal;
 }
 
 @font-face {
   font-family: "titi";
-  src: url("../assets/fonts/Titillium_Web/TitilliumWeb-Bold.ttf") format("ttf");
+  src: url("../assets/fonts/Titillium_Web/TitilliumWeb-Bold.ttf")
+    format("truetype");
   font-weight: 700; /* bold */
   font-style: normal;
 }
@@ -15,14 +17,15 @@
 @font-face {
   font-family: "titi";
   src: url("../assets/fonts/Titillium_Web/TitilliumWeb-ExtraLight.ttf")
-    format("ttf");
+    format("truetype");
   font-weight: 200; /* extralight */
   font-style: normal;
 }
 
 @font-face {
   font-family: "titi";
-  src: url("../assets/fonts/Titillium_Web/TitilliumWeb-Light.ttf") format("ttf");
+  src: url("../assets/fonts/Titillium_Web/TitilliumWeb-Light.ttf")
+    format("truetype");
   font-weight: 300; /* light */
   font-style: normal;
 }
@@ -30,7 +33,7 @@
 @font-face {
   font-family: "titi";
   src: url("../assets/fonts/Titillium_Web/TitilliumWeb-Regular.ttf")
-    format("ttf");
+    format("truetype");
   font-weight: 400; /* regular */
   font-style: normal;
 }
@@ -38,7 +41,7 @@
 @font-face {
   font-family: "titi";
   src: url("../assets/fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf")
-    format("ttf");
+    format("truetype");
   font-weight: 600; /* semibold */
   font-style: normal;
 }
