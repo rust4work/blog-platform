@@ -9,6 +9,7 @@
 
 * {
   font-family: "titi", sans-serif;
+  box-sizing: border-box;
 }
 
 .bannerDefault--wrapper {
@@ -29,4 +30,44 @@
   margin: 0;
   font-weight: 400;
   font-size: 24px;
+}
+
+.bannerArticle {
+  width: 1097px;
+  height: 282px;
+  background-color: #333333;
+  padding: 48px 16px;
+}
+
+.bannerArticle--wrapper {
+  width: 800px;
+  height: 186px;
+  padding: 10px;
+  justify-self: center;
+}
+
+.bannerArticle--wrapper h1 {
+  text-align: left;
+  margin: 0;
+  margin-bottom: 10px;
+  line-height: 40px;
+}
+
+.UserInfo {
+  display: flex;
+  width: 124px;
+  height: 36px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userName {
+  color: #5cb85c;
+  font-weight: 600;
+  font-size: 16px;
+}
+.userDate {
+  color: #aaaaaa;
+  font-weight: 400;
+  font-size: 12.8px;
 }
