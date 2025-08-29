@@ -8,10 +8,10 @@ const variants = {
   regularGray: { tag: "span", fontSize: "16px", fontWeight: "400" },
 };
 
-function Typography({ text, variant, color }) {
+function Typography({ children, variant, color }) {
   const { tag: Tag, fontSize, fontWeight } = variants[variant];
 
-  return <Tag style={{ fontSize, fontWeight, color }}>{text}</Tag>;
+  return <Tag style={{ fontSize, fontWeight, color }}>{children}</Tag>;
 }
 
 export default Typography;

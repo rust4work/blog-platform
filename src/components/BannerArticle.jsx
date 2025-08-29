@@ -6,11 +6,10 @@ function BannerArticle() {
   return (
     <div className="bannerArticle">
       <div className="bannerArticle--wrapper">
-        <Typography
-          text="If we quantify the alarm, we can get to the FTP pixel through the online SSL interface!"
-          variant="h1"
-          color="white"
-        />
+        <Typography variant="h1" color="white">
+          "If we quantify the alarm, we can get to the FTP pixel through the
+          online SSL interface!"
+        </Typography>
         <UserInfo />
       </div>
     </div>
