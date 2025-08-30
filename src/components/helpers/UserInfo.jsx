@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../assets/pics/icon.svg";
+import Icon from "../../assets/pics/IconProfile.svg";
 
 function UserInfo({ userDate = "01.01.23", userName = "John lobster" }) {
   return (
