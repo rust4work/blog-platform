@@ -17,7 +17,7 @@ const variants = {
   },
 
   secondarySmall: {
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     width: "86px",
     height: "40px",
     borderRadius: "8px",
@@ -30,7 +30,7 @@ const variants = {
     fontSize: "12.8px",
   },
   warningSmall: {
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     width: "86px",
     height: "40px",
     borderRadius: "8px",
@@ -58,7 +58,7 @@ const variants = {
   secondaryLarge: {
     width: "120px",
     height: "44px",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     borderRadius: "8px",
     border: "solid 1px #61BB61",
     color: "#61BB61",
@@ -71,7 +71,7 @@ const variants = {
   warningLarge: {
     width: "120px",
     height: "44px",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     borderRadius: "8px",
     border: "solid 1px #BB6161",
     color: "#BB6161",
