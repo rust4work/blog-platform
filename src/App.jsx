@@ -5,13 +5,14 @@ import BannerArticle from "./components/BannerArticle";
 import UserInfo from "./components/helpers/UserInfo";
 import Button from "./components/helpers/Button";
 import BannerUserInfo from "./components/BannerUserInfo";
+import Icon from "./components/helpers/Icon";
 
 import "./App.css";
 
 function App() {
   return (
     <>
-      <BannerUserInfo />
+      <Icon />
     </>
   );
 }

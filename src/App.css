@@ -87,3 +87,16 @@
 .userinfo--container h2 {
   margin: 0;
 }
+
+.icon--wrapper {
+  display: flex;
+  width: 64px;
+  height: 108px;
+  flex-direction: column;
+
+  border: dashed 1px #9747ff;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
