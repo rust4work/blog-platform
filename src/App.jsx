@@ -7,13 +7,15 @@ import Button from "./components/helpers/Button";
 import BannerUserInfo from "./components/BannerUserInfo";
 import Icon from "./components/helpers/Icon";
 import Input from "./components/helpers/Input";
+import NavBarFrame from "./components/helpers/NavBarFrame";
+import Tab from "./components/helpers/Tab";
 
 import "./App.css";
 
 function App() {
   return (
     <>
-      <Input placeholderText="4856" width="500px" height="50px" />
+      <NavBarFrame />
     </>
   );
 }

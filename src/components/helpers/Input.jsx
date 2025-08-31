@@ -11,7 +11,6 @@ function Input({ placeholderText = "", width = "200px", height = "40px" }) {
     outline: "2px solid #aaaaaa",
     outlineOffset: "2px",
     fontSize: "14px",
-    overflow: "none",
   };
 
   return (

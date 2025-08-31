@@ -100,3 +100,34 @@
   justify-content: center;
   border-radius: 5px;
 }
+.tab--wrapper {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  padding: 8px 4px;
+  gap: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  border: none;
+}
+
+.navbar--container {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 60px;
+  justify-content: space-between;
+  border-bottom: 1px solid #0000001a;
+}
+
+.homeLink {
+  font-size: 24px;
+  font-weight: 700;
+  color: #61bb61;
+  text-decoration: none;
+  padding-left: 20px;
+}
+.links {
+  display: flex;
+}
