@@ -9,13 +9,14 @@ import Icon from "./components/helpers/Icon";
 import Input from "./components/helpers/Input";
 import NavBarFrame from "./components/helpers/NavBarFrame";
 import Tab from "./components/helpers/Tab";
+import PaginationBar from "./components/helpers/PaginationBar";
 
 import "./App.css";
 
 function App() {
   return (
     <>
-      <NavBarFrame />
+      <PaginationBar />
     </>
   );
 }
