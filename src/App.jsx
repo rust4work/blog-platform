@@ -11,27 +11,37 @@ import NavBarFrame from "./components/helpers/NavBarFrame";
 import Tab from "./components/helpers/Tab";
 import PaginationBar from "./components/helpers/PaginationBar";
 import Post from "./components/helpers/Post";
-
-import "./App.scss";
-// import { useEffect, useState } from "react";
 import Sidebar from "./components/helpers/Sidebar";
 
-function App() {
-  // const [posts, setPosts] = useState([]);
+import "./App.scss";
+import { useEffect, useState } from "react";
 
-  // useEffect(() => {
-  //   fetch("https://realworld.habsida.net/api/articles")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("API response:", data);
-  //       setPosts(data.articles); // массив
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
+function App() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://realworld.habsida.net/api/articles")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("API response:", data);
+        setPosts(data.articles); // массив
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <>
+      <NavBarFrame />
+      <BannerArticle />
+      <BannerDefault />
+      <BannerUserInfo />
+      <UserInfo />
       <Sidebar />
+      <Input />
+      <PaginationBar />
+      {posts.slice(0, 5).map((post) => (
+        <Post key={post.slug} postData={post} />
+      ))}
     </>
   );
 }

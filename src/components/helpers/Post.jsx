@@ -5,8 +5,14 @@ import Typography from "./Typography";
 import Tag from "./Tag";
 
 function Post({ postData }) {
-  const { favoritesCount, title, description, tagList, author, createdAt } =
-    postData;
+  const {
+    favoritesCount = "0",
+    title = "",
+    description = "",
+    tagList = "",
+    author = "",
+    createdAt = "",
+  } = postData;
 
   return (
     <div className="post--wrapper">
