@@ -13,26 +13,25 @@ import PaginationBar from "./components/helpers/PaginationBar";
 import Post from "./components/helpers/Post";
 
 import "./App.scss";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import Sidebar from "./components/helpers/Sidebar";
 
 function App() {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    fetch("https://realworld.habsida.net/api/articles")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("API response:", data);
-        setPosts(data.articles); // массив
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://realworld.habsida.net/api/articles")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("API response:", data);
+  //       setPosts(data.articles); // массив
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
 
   return (
     <>
-      {posts.map((post, index) => (
-        <Post key={index} postData={post} />
-      ))}
+      <Sidebar />
     </>
   );
 }

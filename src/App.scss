@@ -189,3 +189,15 @@
     background: #ddd;
   }
 }
+
+.sidebar--wrapper {
+  width: 261px;
+  height: auto;
+  border: 1px solid #aaaaaa;
+  border-radius: 8px;
+  text-align: left;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
