@@ -88,7 +88,7 @@ function Button({ variant = "primarySmall", children }) {
   const IconFav = variant.startsWith("warning") ? IconFavRed : IconFavGreen;
 
   return (
-    <button style={style}>
+    <button className="buttons-btn" style={style}>
       <img src={IconFav} alt="" />
       {children}
     </button>

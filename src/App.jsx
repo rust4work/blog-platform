@@ -10,13 +10,29 @@ import Input from "./components/helpers/Input";
 import NavBarFrame from "./components/helpers/NavBarFrame";
 import Tab from "./components/helpers/Tab";
 import PaginationBar from "./components/helpers/PaginationBar";
+import Post from "./components/helpers/Post";
 
-import "./App.css";
+import "./App.scss";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://realworld.habsida.net/api/articles")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("API response:", data);
+        setPosts(data.articles); // массив
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <>
-      <PaginationBar />
+      {posts.map((post, index) => (
+        <Post key={index} postData={post} />
+      ))}
     </>
   );
 }

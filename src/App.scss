@@ -11,6 +11,7 @@
 * {
   font-family: "titi", sans-serif;
   box-sizing: border-box;
+  margin: 0;
 }
 
 .bannerDefault--wrapper {
@@ -123,6 +124,10 @@
   justify-self: center;
 }
 
+.buttons-btn:active {
+  background-color: #e4e4e4 !important;
+}
+
 .homeLink {
   font-size: 24px;
   font-weight: 700;
@@ -132,4 +137,55 @@
 }
 .links {
   display: flex;
+}
+
+.post--wrapper {
+  width: 470px;
+  height: 224px;
+  padding-top: 16px;
+  padding-right: 10px;
+  padding-bottom: 16px;
+  padding-left: 10px;
+  opacity: 1;
+  border: 1px solid #aaaaaa;
+  border-radius: 8px;
+  margin: 16px 10px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .main {
+    width: 450px;
+    height: 142px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+}
+
+.tag {
+  height: 20px;
+  display: inline-block;
+  padding: 0px 8px;
+  background: #ffffff;
+  color: #aaaaaa;
+  border-radius: 8px;
+  border: 1px solid #aaaaaa;
+  font-size: 14px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background: #ddd;
+  }
 }
