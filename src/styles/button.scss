@@ -2,11 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 6px;
   gap: 8px;
   font-weight: 500;
   cursor: pointer;
   background-color: transparent;
+  border: 1px solid #61bb61;
+  color: #61bb61;
+  padding: 10px 12px;
 
   &--primary-small {
     background-color: #61bb61;

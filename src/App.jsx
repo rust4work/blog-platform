@@ -1,6 +1,9 @@
 // import { useState } from "react";
 import MainPage from "./pages/MainPage";
 import ProfilePage from "./pages/ProfilePage";
+import NewPost from "./pages/NewPost";
+import Settings from "./pages/Settings";
+import Loader from "./components/helpers/Loader";
 
 //layouts
 import RootLayout from "./layouts/RootLayout";
@@ -19,22 +22,13 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<MainPage />}></Route>
       <Route path="/profile" element={<ProfilePage />}></Route>
+      <Route path="/newpost" element={<NewPost />}></Route>
+      <Route path="/settings" element={<Settings />}></Route>
     </Route>
   )
 );
 
 function App() {
-  // const [posts, setPosts] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("https://realworld.habsida.net/api/articles")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setPosts(data.articles); // массив
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
-
   return (
     <>
       <RouterProvider router={router} />

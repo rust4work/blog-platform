@@ -74,7 +74,7 @@
 }
 
 .userinfo--container {
-  width: 1097px;
+  max-width: 1097px;
   height: 348px;
   padding: 48px 16px;
   background-color: #333333;
@@ -190,7 +190,7 @@
 .tag {
   height: 20px;
   display: inline-block;
-  padding: 0px 8px;
+  padding: 5px 12px;
   background: #ffffff;
   color: #aaaaaa;
   border-radius: 8px;
@@ -199,6 +199,7 @@
   margin-right: 6px;
   margin-bottom: 6px;
   cursor: pointer;
+  line-height: 0.7;
 
   &:hover {
     background: #ddd;
@@ -257,5 +258,33 @@
 
   &:hover:not(.selected) {
     background-color: #e8fbe8;
+  }
+}
+
+/* Loader.css */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .loading-text {
+    margin-top: 16px;
+    font-size: 18px;
+    color: #61bb61;
+  }
+}
+.refresh {
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

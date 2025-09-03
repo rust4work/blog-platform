@@ -13,10 +13,10 @@ function NavBarFrame() {
         <Link to="/newpost">
           <Tab variant="newpost">New post</Tab>
         </Link>
-        <Link to="settings">
+        <Link to="/settings">
           <Tab variant="settings">Settings</Tab>
         </Link>
-        <Link to="profile">
+        <Link to="/profile">
           <Tab variant="profile">Profile</Tab>
         </Link>
       </div>
