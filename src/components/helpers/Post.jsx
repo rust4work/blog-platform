@@ -1,9 +1,7 @@
-import React from "react";
-import UserInfo from "./UserInfo";
 import Button from "./Button";
 import Typography from "./Typography";
 import Tag from "./Tag";
-import DefaultIcon from "../../assets/pics/IconProfile.svg";
+import UserInfo from "./UserInfo";
 
 function Post({ postData }) {
   const { favoritesCount, title, description, tagList, author, createdAt } =
@@ -12,14 +10,11 @@ function Post({ postData }) {
   return (
     <div className="post--wrapper">
       <div className="header">
-        <div className="user">
-          <img
-            src={author.image || DefaultIcon}
-            alt={author.username}
-            width={40}
-          />
-          <span>{author.username}</span>
-        </div>
+        <UserInfo
+          userName={author.username}
+          userImage={author.image}
+          userDate={new Date(createdAt).toLocaleDateString()}
+        />
         <Button variant="secondarySmall">{favoritesCount}</Button>
       </div>
 
@@ -34,10 +29,6 @@ function Post({ postData }) {
             <Tag key={i}>{tag}</Tag>
           ))}
         </div>
-
-        <Typography variant="small" color="grey">
-          {new Date(createdAt).toLocaleDateString()}
-        </Typography>
       </div>
     </div>
   );

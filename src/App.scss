@@ -15,7 +15,6 @@
 }
 
 .bannerDefault--wrapper {
-  width: 1097px;
   height: 190px;
   background-color: #61bb61;
   color: aliceblue;
@@ -146,7 +145,7 @@
 }
 
 .post--wrapper {
-  width: 470px;
+  max-width: 800px;
   height: 224px;
   padding-top: 16px;
   padding-right: 10px;
@@ -155,17 +154,12 @@
   opacity: 1;
   border: 1px solid #aaaaaa;
   border-radius: 8px;
-  margin: 16px 10px;
+  margin: 16px auto;
 
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .user {
-      display: flex;
-      align-items: center;
-    }
   }
 
   .main {
@@ -181,6 +175,15 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
+  }
+}
+
+.UserInfo {
+  img {
+    width: 40px;
+    height: 40px;
+
+    object-fit: cover;
   }
 }
 
@@ -203,12 +206,13 @@
 }
 
 .sidebar--wrapper {
-  width: 261px;
+  max-width: 800px;
   height: auto;
   border: 1px solid #aaaaaa;
   border-radius: 8px;
   text-align: left;
   padding: 16px;
+  margin: 16px auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -234,7 +238,7 @@
 }
 
 .pagination-bar {
-  display: flex;
+  margin: 12px auto;
 }
 
 .pagination-btn {

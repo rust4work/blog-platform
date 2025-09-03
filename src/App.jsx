@@ -1,49 +1,43 @@
 // import { useState } from "react";
-import BannerDefault from "./components/BannerDefault";
-import Typography from "./components/helpers/Typography";
-import BannerArticle from "./components/BannerArticle";
-import UserInfo from "./components/helpers/UserInfo";
-import Button from "./components/helpers/Button";
-import BannerUserInfo from "./components/BannerUserInfo";
-import Icon from "./components/helpers/Icon";
-import Input from "./components/helpers/Input";
-import NavBarFrame from "./components/helpers/NavBarFrame";
-import Tab from "./components/helpers/Tab";
-import PaginationBar from "./components/helpers/PaginationBar";
-import Post from "./components/helpers/Post";
-import Sidebar from "./components/helpers/Sidebar";
+import MainPage from "./pages/MainPage";
+import ProfilePage from "./pages/ProfilePage";
+
+//layouts
+import RootLayout from "./layouts/RootLayout";
 
 import "./App.scss";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<MainPage />}></Route>
+      <Route path="/profile" element={<ProfilePage />}></Route>
+    </Route>
+  )
+);
 
 function App() {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    fetch("https://realworld.habsida.net/api/articles")
-      .then((response) => response.json())
-      .then((data) => {
-        setPosts(data.articles); // массив
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://realworld.habsida.net/api/articles")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setPosts(data.articles); // массив
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
 
   return (
     <>
-      <NavBarFrame />
-      <BannerArticle />
-      <BannerDefault />
-      <BannerUserInfo />
-      <UserInfo />
-      <Sidebar />
-      <Input />
-      <PaginationBar />
-      {posts.slice(0, 5).map((post) => (
-        <Post key={post.slug} postData={post} />
-      ))}
-      <Button variant="primary-small">primsmall</Button>
-      <Button variant="secondary-small">primwdwdsmall</Button>
-      <Button variant="warning-small">primsmall</Button>
+      <RouterProvider router={router} />
     </>
   );
 }

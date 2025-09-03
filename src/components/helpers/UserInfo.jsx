@@ -1,10 +1,18 @@
 import React from "react";
-import Icon from "../../assets/pics/IconProfile.svg";
+import DefaultIcon from "../../assets/pics/IconProfile.svg";
 
-function UserInfo({ userDate = "01.01.23", userName = "John lobster" }) {
+function UserInfo({
+  userName = "John Lobster",
+  userDate = "01.01.23",
+  userImage,
+}) {
   return (
     <div className="UserInfo">
-      <img src={Icon} alt="" className="profilePic" />
+      <img
+        src={userImage || DefaultIcon}
+        alt={userName}
+        className="profilePic"
+      />
       <div className="userData">
         <div className="userName">{userName}</div>
         <div className="userDate">{userDate}</div>
