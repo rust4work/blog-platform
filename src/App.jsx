@@ -23,7 +23,6 @@ function App() {
     fetch("https://realworld.habsida.net/api/articles")
       .then((response) => response.json())
       .then((data) => {
-        console.log("API response:", data);
         setPosts(data.articles); // массив
       })
       .catch((error) => console.error(error));
@@ -42,6 +41,9 @@ function App() {
       {posts.slice(0, 5).map((post) => (
         <Post key={post.slug} postData={post} />
       ))}
+      <Button variant="primary-small">primsmall</Button>
+      <Button variant="secondary-small">primwdwdsmall</Button>
+      <Button variant="warning-small">primsmall</Button>
     </>
   );
 }

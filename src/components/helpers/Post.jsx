@@ -3,22 +3,21 @@ import UserInfo from "./UserInfo";
 import Button from "./Button";
 import Typography from "./Typography";
 import Tag from "./Tag";
+import DefaultIcon from "../../assets/pics/IconProfile.svg";
 
 function Post({ postData }) {
-  const {
-    favoritesCount = "0",
-    title = "",
-    description = "",
-    tagList = "",
-    author = "",
-    createdAt = "",
-  } = postData;
+  const { favoritesCount, title, description, tagList, author, createdAt } =
+    postData;
 
   return (
     <div className="post--wrapper">
       <div className="header">
         <div className="user">
-          <img src={author.image} alt={author.username} width={40} />
+          <img
+            src={author.image || DefaultIcon}
+            alt={author.username}
+            width={40}
+          />
           <span>{author.username}</span>
         </div>
         <Button variant="secondarySmall">{favoritesCount}</Button>

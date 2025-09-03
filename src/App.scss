@@ -101,6 +101,12 @@
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+
+  img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
 }
 .tab--wrapper {
   display: flex;
@@ -154,6 +160,12 @@
   .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    .user {
+      display: flex;
+      align-items: center;
+    }
   }
 
   .main {
@@ -200,4 +212,46 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+.input--wrapper {
+  display: inline-block;
+
+  input {
+    width: 200px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    outline: 2px solid #aaaaaa;
+    outline-offset: 2px;
+    font-size: 14px;
+
+    &:focus {
+      outline-color: #61bb61; // подсветка при фокусе
+    }
+  }
+}
+
+.pagination-bar {
+  display: flex;
+}
+
+.pagination-btn {
+  padding: 12px 16px;
+  border: 1px solid #61bb61;
+  background-color: #fff;
+  color: #61bb61;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  &.selected {
+    background-color: #61bb61;
+    color: #fff;
+  }
+
+  &:hover:not(.selected) {
+    background-color: #e8fbe8;
+  }
 }

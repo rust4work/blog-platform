@@ -9,7 +9,6 @@ function Sidebar() {
     fetch("https://realworld.habsida.net/api/tags")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Tags from API:", data.tags);
         setTags(data.tags);
       })
       .catch((error) => console.error(error));
