@@ -1,32 +1,18 @@
 import React from "react";
-import NewPostIcon from "../../assets/pics/newPostIcon.svg";
-import SettingsIcon from "../../assets/pics/settingsIcon.svg";
-import ProfileIcon from "../../assets/pics/iconProfile.svg";
+import PropTypes from "prop-types";
 
-const tabVariants = {
-  home: {
-    icon: null, // без иконки
-  },
-  newpost: {
-    icon: NewPostIcon,
-  },
-  settings: {
-    icon: SettingsIcon,
-  },
-  profile: {
-    icon: ProfileIcon,
-  },
-};
-
-function Tab({ variant, children }) {
-  const Icon = tabVariants[variant]?.icon;
-
+function Tab({ icon, children }) {
   return (
-    <button className="tab--wrapper">
-      {Icon && <img src={Icon} alt={`${variant}-icon`} />}
+    <div className="tab--wrapper">
+      {icon && <img src={icon} alt={`${children}-icon`} />}
       <span>{children}</span>
-    </button>
+    </div>
   );
 }
+
+Tab.propTypes = {
+  icon: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
 
 export default Tab;

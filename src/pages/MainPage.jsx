@@ -21,10 +21,6 @@ function MainPage() {
       .catch(console.error);
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
-
   const startIndex = (currentPage - 1) * postsPerPage;
   const currentPosts = posts.slice(startIndex, startIndex + postsPerPage);
   const totalPages = Math.ceil(posts.length / postsPerPage);
@@ -32,20 +28,26 @@ function MainPage() {
   return (
     <>
       <BannerDefault />
-      <Sidebar />
-      <div className="posts-list">
-        {currentPosts.map((post) => (
-          <Post key={post.id} postData={post} />
-        ))}
-      </div>
 
-      <PaginationBar
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+      {loading ? (
+        <Loader /> // показывается только под баннером
+      ) : (
+        <>
+          <Sidebar />
+          <div className="posts-list">
+            {currentPosts.map((post) => (
+              <Post key={post.slug} postData={post} />
+            ))}
+          </div>
+
+          <PaginationBar
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
+        </>
+      )}
     </>
   );
 }
-
 export default MainPage;

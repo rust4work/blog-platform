@@ -1,24 +1,43 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Tab from "./Tab";
-import { Link } from "react-router-dom";
+import NewPostIcon from "../../assets/pics/NewPostIcon.svg";
+import SettingsIcon from "../../assets/pics/settingsIcon.svg";
+import ProfileIcon from "../../assets/pics/iconProfile.svg";
 
 function NavBarFrame() {
   return (
     <div className="navbar--container">
       <div className="homeLink">Realworld blog</div>
       <div className="links">
-        <Link to="/">
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
           <Tab>Home</Tab>
-        </Link>
-        <Link to="/newpost">
-          <Tab variant="newpost">New post</Tab>
-        </Link>
-        <Link to="/settings">
-          <Tab variant="settings">Settings</Tab>
-        </Link>
-        <Link to="/profile">
-          <Tab variant="profile">Profile</Tab>
-        </Link>
+        </NavLink>
+
+        <NavLink
+          to="/newpost"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          <Tab icon={NewPostIcon}>New Post</Tab>
+        </NavLink>
+
+        <NavLink
+          to="/settings"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          <Tab icon={SettingsIcon}>Settings</Tab>
+        </NavLink>
+
+        <NavLink
+          to="/profile"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          <Tab icon={ProfileIcon}>Profile</Tab>
+        </NavLink>
       </div>
     </div>
   );

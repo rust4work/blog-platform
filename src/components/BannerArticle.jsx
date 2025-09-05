@@ -2,15 +2,23 @@ import React from "react";
 import Typography from "./helpers/Typography";
 import UserInfo from "./helpers/UserInfo";
 
-function BannerArticle() {
+function BannerArticle({ article }) {
+  if (!article) return null;
+
   return (
     <div className="bannerArticle">
       <div className="bannerArticle--wrapper">
+        {/* Заголовок статьи */}
         <Typography variant="h1" color="white">
-          "If we quantify the alarm, we can get to the FTP pixel through the
-          online SSL interface!"
+          {article.title}
         </Typography>
-        <UserInfo />
+
+        {/* Автор и дата */}
+        <UserInfo
+          userName={article.author.username}
+          userImage={article.author.image}
+          userDate={new Date(article.createdAt).toLocaleDateString()}
+        />
       </div>
     </div>
   );
