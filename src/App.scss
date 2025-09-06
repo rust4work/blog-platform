@@ -362,3 +362,25 @@ a {
   outline: none;
   border: 1px solid #aaaaaa;
 }
+
+.newpost--wrapper {
+  width: 500px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.newpost--form {
+  width: 400px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 10px;
+  gap: 16px;
+}
+
+.newpost--tags .tagList {
+  width: 400px;
+  justify-items: center;
+
+  display: flex;
+  flex-wrap: wrap;
+}

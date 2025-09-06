@@ -30,7 +30,7 @@ function MainPage() {
       <BannerDefault />
 
       {loading ? (
-        <Loader /> // показывается только под баннером
+        <Loader />
       ) : (
         <>
           <Sidebar />
