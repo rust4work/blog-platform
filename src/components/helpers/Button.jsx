@@ -3,12 +3,12 @@ import IconFavGreen from "../../assets/pics/IconFavGreen.svg";
 import IconFavRed from "../../assets/pics/IconFavRed.svg";
 import "../../styles/button.scss";
 
-function Button({ variant = "primary-small", children }) {
+function Button({ variant = "primary-small", children, withIcon = true }) {
   const IconFav = variant.startsWith("warning") ? IconFavRed : IconFavGreen;
 
   return (
     <button className={`buttons-btn buttons-btn--${variant}`}>
-      <img src={IconFav} alt="" />
+      {withIcon && <img src={IconFav} alt="" />}
       {children}
     </button>
   );

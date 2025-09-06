@@ -42,9 +42,11 @@ function SinglePost() {
             <UserInfo
               userName={post.author.username}
               userImage={post.author.image}
-              userDate={post.author.date}
+              userDate={new Date(post.createdAt).toLocaleDateString()}
             />
-            <Button variant="primary-small">Favourite Article</Button>
+            <Button variant="primary-small" withIcon={false}>
+              Favourite Article
+            </Button>
           </div>
         )}
       </div>

@@ -38,8 +38,6 @@ function Post({ postData }) {
               <Tag key={i}>{tag}</Tag>
             ))}
           </div>
-
-          <Button variant="link">Read more...</Button>
         </div>
       </div>
     </Link>

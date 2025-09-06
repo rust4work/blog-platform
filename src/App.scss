@@ -318,3 +318,47 @@ a {
   display: flex;
   gap: 24px;
 }
+
+.settings--wrapper {
+  width: 500px;
+  margin: 0 auto;
+  padding: 16px;
+
+  .settings--form {
+    width: 100%;
+    padding: 32px;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.form-buttons {
+  display: flex;
+  flex-direction: column;
+
+  .buttons-btn--primary-small {
+    width: 144px;
+    height: 44px;
+    align-self: flex-end;
+  }
+
+  .buttons-btn--warning-small {
+    width: 144px;
+    height: 32px;
+    align-self: flex-start;
+  }
+}
+
+#comment--area {
+  height: 100px;
+  padding: 16px;
+  border: 1px solid #aaaaaa;
+  border-radius: 8px;
+}
+
+.input--wrapper input {
+  outline: none;
+  border: 1px solid #aaaaaa;
+}
