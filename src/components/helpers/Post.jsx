@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import Typography from "./Typography";
 import Tag from "./Tag";
@@ -15,32 +15,55 @@ function Post({ postData }) {
     createdAt,
   } = postData;
 
+  const navigate = useNavigate();
+
+  const openPost = () => {
+    navigate(`/article/${slug}`);
+  };
+
   return (
-    <Link to={`/article/${slug}`} className="post-link">
-      <div className="post--wrapper">
-        <div className="header">
-          <UserInfo
-            userName={author.username}
-            userImage={author.image}
-            userDate={new Date(createdAt).toLocaleDateString()}
-          />
-          <Button variant="secondarySmall">{favoritesCount}</Button>
-        </div>
+    <div className="post--wrapper">
+      <div className="header">
+        <UserInfo
+          userName={author.username}
+          userImage={author.image}
+          userDate={new Date(createdAt).toLocaleDateString()}
+        />
 
-        <div className="main">
-          <Typography variant="h2">{title}</Typography>
-          <Typography variant="regularGrey" color="grey">
-            {description}
-          </Typography>
+        {/* лайк работает отдельно */}
+        <Button
+          variant="secondarySmall"
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("Лайкнули пост:", slug);
+          }}
+        >
+          {favoritesCount}
+        </Button>
+      </div>
 
-          <div className="tags">
-            {tagList?.map((tag, i) => (
-              <Tag key={i}>{tag}</Tag>
-            ))}
-          </div>
+      {/* кликабельная только основная часть */}
+      <div className="main" onClick={openPost}>
+        <Typography variant="h2">{title}</Typography>
+        <Typography variant="regularGrey" color="grey">
+          {description}
+        </Typography>
+
+        <div className="tags">
+          {tagList?.map((tag, i) => (
+            <Tag
+              key={i}
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("Клик по тегу:", tag);
+              }}
+            >
+              {tag}
+            </Tag>
+          ))}
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

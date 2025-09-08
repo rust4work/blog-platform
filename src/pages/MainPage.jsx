@@ -1,4 +1,6 @@
+// MainPage.jsx
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import BannerDefault from "../components/BannerDefault";
 import Sidebar from "../components/helpers/Sidebar";
 import Post from "../components/helpers/Post";
@@ -8,22 +10,36 @@ import Loader from "../components/helpers/Loader";
 function MainPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPosts, setTotalPosts] = useState(0);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = Number(searchParams.get("page")) || 1; // 👈 берём страницу из URL
+  const [currentPage, setCurrentPage] = useState(pageParam);
+
   const postsPerPage = 3;
 
   useEffect(() => {
-    fetch("https://realworld.habsida.net/api/articles")
+    setLoading(true);
+    const offset = (currentPage - 1) * postsPerPage;
+
+    fetch(
+      `https://realworld.habsida.net/api/articles?limit=${postsPerPage}&offset=${offset}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setPosts(data.articles);
+        setTotalPosts(data.articlesCount);
         setLoading(false);
       })
       .catch(console.error);
-  }, []);
+  }, [currentPage]);
 
-  const startIndex = (currentPage - 1) * postsPerPage;
-  const currentPosts = posts.slice(startIndex, startIndex + postsPerPage);
-  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setSearchParams({ page }); // 👈 записываем в URL
+  };
 
   return (
     <>
@@ -35,7 +51,7 @@ function MainPage() {
         <>
           <Sidebar />
           <div className="posts-list">
-            {currentPosts.map((post) => (
+            {posts.map((post) => (
               <Post key={post.slug} postData={post} />
             ))}
           </div>
@@ -43,11 +59,12 @@ function MainPage() {
           <PaginationBar
             totalPages={totalPages}
             currentPage={currentPage}
-            onPageChange={setCurrentPage}
+            onPageChange={handlePageChange}
           />
         </>
       )}
     </>
   );
 }
+
 export default MainPage;

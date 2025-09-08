@@ -4,7 +4,7 @@ a {
   color: inherit;
 }
 #root {
-  max-width: 1280px;
+  // max-width: 1280px;
   width: 100%;
   margin: 0 auto;
   padding: 0;
@@ -37,16 +37,20 @@ a {
 }
 
 .bannerArticle {
-  max-width: 1200px;
+  width: 100%;
   height: 282px;
   background-color: #333333;
   padding: 48px 10%;
+  margin-top: 60px;
+  margin-bottom: 30px;
 }
 
 .bannerArticle--wrapper {
   height: 186px;
   padding: 10px;
   justify-self: start;
+  margin: 0 auto;
+  width: 800px;
 }
 
 .bannerArticle--wrapper h1 {
@@ -122,11 +126,9 @@ a {
 }
 
 .links .active {
-  border-bottom: solid 2px #61bb61;
   color: #61bb61;
 }
 .links a {
-  border-bottom: solid 2px #aaaaaa;
   color: #aaaaaa;
 }
 
@@ -174,12 +176,16 @@ a {
   }
 
   .main {
-    width: 450px;
     height: 142px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: space-between;
+
+    h2 {
+      text-align: left;
+    }
   }
 
   .tags {
@@ -311,6 +317,11 @@ a {
   max-width: 800px;
   margin: 0 auto;
   padding: 16px;
+  text-align: left;
+
+  .tagList {
+    margin-top: 16px;
+  }
 }
 .singlepost--footer {
   justify-self: center;
@@ -331,6 +342,11 @@ a {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
   }
 }
 
@@ -375,6 +391,11 @@ a {
   flex-direction: column;
   padding: 24px 10px;
   gap: 16px;
+
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
 }
 
 .newpost--tags .tagList {
@@ -383,4 +404,18 @@ a {
 
   display: flex;
   flex-wrap: wrap;
+}
+
+.signup--wrapper {
+  width: 500px;
+  height: 558px;
+  justify-content: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  :last-child {
+    align-self: end;
+  }
 }

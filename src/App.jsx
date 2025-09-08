@@ -6,6 +6,7 @@ import Settings from "./pages/Settings";
 import Loader from "./components/helpers/Loader";
 import SinglePost from "./pages/SinglePost";
 import BannerUserInfo from "./components/BannerUserInfo";
+import SignUpPage from "./pages/SignUpPage";
 
 //layouts
 import RootLayout from "./layouts/RootLayout";
@@ -17,18 +18,27 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
+  Navigate,
 } from "react-router-dom";
-import BannerDefault from "./components/BannerDefault";
+
+const isAuthenticated = Boolean(localStorage.getItem("token"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<MainPage />}></Route>
-      <Route path="/article/:slug" element={<SinglePost />} />
+      <Route index element={<MainPage />} />
+      <Route path="signup" element={<SignUpPage />} />
+      <Route path="article/:slug" element={<SinglePost />} />
 
-      <Route path="/profile" element={<ProfilePage />}></Route>
-      <Route path="/newpost" element={<NewPost />}></Route>
-      <Route path="/settings" element={<Settings />}></Route>
+      <Route
+        path="profile"
+        element={
+          isAuthenticated ? <ProfilePage /> : <Navigate to="/signup" replace />
+        }
+      />
+
+      <Route path="newpost" element={<NewPost />} />
+      <Route path="settings" element={<Settings />} />
     </Route>
   )
 );
