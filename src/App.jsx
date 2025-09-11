@@ -20,6 +20,7 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
+import SignIn from "./pages/SignIn";
 
 const isAuthenticated = Boolean(localStorage.getItem("token"));
 
@@ -27,13 +28,14 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<MainPage />} />
-      <Route path="signup" element={<SignUpPage />} />
+      <Route path="sign-up" element={<SignUpPage />} />
+      <Route path="sign-in" element={<SignIn />} />
       <Route path="article/:slug" element={<SinglePost />} />
 
       <Route
         path="profile"
         element={
-          isAuthenticated ? <ProfilePage /> : <Navigate to="/signup" replace />
+          isAuthenticated ? <ProfilePage /> : <Navigate to="/sign-in" replace />
         }
       />
 
