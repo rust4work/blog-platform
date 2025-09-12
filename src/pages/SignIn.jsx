@@ -14,33 +14,36 @@ function SignIn() {
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    setLoginError(""); // сброс ошибки перед новым запросом
+  const onSubmit = async (data) => {
+    setLoginError(""); // сброс ошибки
 
-    fetch("/api/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user: {
-          email: data.username,
-          password: data.password,
-        },
-      }),
-    })
-      .then(async (res) => {
-        if (!res.ok) {
-          const text = await res.text(); // читаем как текст, а не json
-          throw new Error(text || "User not found");
-        }
-        return res.json(); // только если статус 2xx
-      })
-      .then((result) => {
-        console.log("Login success:", result.user);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoginError(err.message);
+    try {
+      const res = await fetch("https://realworld.habsida.net/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: {
+            email: data.email,
+            password: data.password,
+          },
+        }),
       });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.errors?.body?.[0] || "Login failed");
+      }
+
+      console.log("Login success:", result.user);
+
+      // например, сохраняем токен:
+      localStorage.setItem("token", result.user.token);
+      navigate("/profile-page");
+    } catch (err) {
+      console.error("Ошибка входа:", err.message);
+      setLoginError(err.message);
+    }
   };
 
   return (
@@ -54,7 +57,7 @@ function SignIn() {
         placeholderText="Email"
         width="480px"
         height="48px"
-        {...register("username", { required: "Email is required" })}
+        {...register("email", { required: "Email is required" })}
       />
       {errors.username && (
         <span style={{ color: "red" }}>{errors.username.message}</span>

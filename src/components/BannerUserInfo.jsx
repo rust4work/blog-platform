@@ -3,14 +3,23 @@ import Typography from "./helpers/Typography";
 import Button from "./helpers/Button";
 import Checkers from "../assets/pics/Checkers.svg";
 
-function BannerUserInfo() {
+function BannerUserInfo({ user }) {
+  if (!user) return null;
   return (
     <div className="userinfo--container">
-      <img src={Checkers} alt="" />
+      {user.image ? (
+        <img src={user.image} alt={user.username} />
+      ) : (
+        <div className="default-avatar">👤</div>
+      )}
+
       <Typography variant="h2" color="white">
-        eni9mu5
+        {user.username}
       </Typography>
-      <Button variant="secondaryLarge">text</Button>
+
+      <p style={{ color: "white" }}>{user.bio || "No bio yet"}</p>
+
+      <Button variant="secondaryLarge">Edit Profile</Button>
     </div>
   );
 }

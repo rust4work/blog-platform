@@ -33,7 +33,7 @@ function NavBarFrame() {
         </NavLink>
 
         <NavLink
-          to="/profile"
+          to="/profile-page"
           className={({ isActive }) => (isActive ? "active" : "")}
         >
           <Tab icon={ProfileIcon}>Profile</Tab>

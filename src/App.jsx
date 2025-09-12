@@ -33,7 +33,7 @@ const router = createBrowserRouter(
       <Route path="article/:slug" element={<SinglePost />} />
 
       <Route
-        path="profile"
+        path="profile-page"
         element={
           isAuthenticated ? <ProfilePage /> : <Navigate to="/sign-in" replace />
         }
