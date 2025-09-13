@@ -48,7 +48,7 @@ function SignUpPage() {
           placeholderText="UserName"
           width="480px"
           height="48px"
-          {...register("username", { required: "Введите имя пользователя" })}
+          {...register("username", { required: "Enter username" })}
         />
         {errors.username && <p>{errors.username.message}</p>}
 
@@ -57,10 +57,10 @@ function SignUpPage() {
           width="480px"
           height="48px"
           {...register("email", {
-            required: "Введите email",
+            required: "Input email",
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Некорректный email",
+              message: "Invalid email",
             },
           })}
         />
@@ -72,8 +72,8 @@ function SignUpPage() {
           width="480px"
           height="48px"
           {...register("password", {
-            required: "Введите пароль",
-            minLength: { value: 6, message: "Минимум 6 символов" },
+            required: "Enter password",
+            minLength: { value: 6, message: "Minimum 6 characters" },
           })}
         />
         {errors.password && <p>{errors.password.message}</p>}

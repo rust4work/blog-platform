@@ -15,7 +15,7 @@ function SignIn() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    setLoginError(""); // сброс ошибки
+    setLoginError("");
 
     try {
       const res = await fetch("https://realworld.habsida.net/api/users/login", {
@@ -37,7 +37,6 @@ function SignIn() {
 
       console.log("Login success:", result.user);
 
-      // например, сохраняем токен:
       localStorage.setItem("token", result.user.token);
       navigate("/profile-page");
     } catch (err) {
@@ -80,11 +79,9 @@ function SignIn() {
         Sign in
       </Button>
 
-      <Link to="/sign-up">
-        <Button variant="secondary-large" withIcon={false} type="button">
-          Sign up
-        </Button>
-      </Link>
+      <Button variant="secondary-large" withIcon={false} type="button">
+        <Link to="/sign-up">Sign up</Link>
+      </Button>
     </form>
   );
 }

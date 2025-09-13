@@ -1,11 +1,17 @@
-import { useOutletContext, Navigate } from "react-router-dom";
+import { useOutletContext, Navigate, useNavigate } from "react-router-dom";
 import Button from "./helpers/Button";
 import Typography from "./helpers/Typography";
 
 function BannerUserInfo() {
   const { user, setUser } = useOutletContext();
 
+  const navigate = useNavigate();
+
   if (!user) return <Navigate to="/sign-in" replace />;
+
+  const clickHandler = () => {
+    navigate("/settings");
+  };
 
   return (
     <div className="userinfo--container">
@@ -18,7 +24,7 @@ function BannerUserInfo() {
         {user.username}
       </Typography>
 
-      <Button variant="secondary-small" withIcon={false}>
+      <Button variant="secondary-small" withIcon={false} onClick={clickHandler}>
         Edit profile
       </Button>
 

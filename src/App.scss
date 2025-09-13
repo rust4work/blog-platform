@@ -68,6 +68,15 @@ a {
   justify-content: space-between;
 }
 
+.default-avatar,
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
 .userName {
   color: #5cb85c;
   font-weight: 600;
@@ -430,4 +439,16 @@ a {
     border-bottom: 1px solid #aaaaaa;
     color: #aaaaaa;
   }
+}
+
+.signup--wrapper {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.signin--wrapper :last-child {
+  align-self: start;
 }
