@@ -5,7 +5,7 @@ import NewPostIcon from "../../assets/pics/NewPostIcon.svg";
 import SettingsIcon from "../../assets/pics/settingsIcon.svg";
 import ProfileIcon from "../../assets/pics/iconProfile.svg";
 
-function NavBarFrame() {
+function NavBarFrame({ user }) {
   return (
     <div className="navbar--container">
       <div className="homeLink">Realworld blog</div>
@@ -36,7 +36,9 @@ function NavBarFrame() {
           to="/profile-page"
           className={({ isActive }) => (isActive ? "active" : "")}
         >
-          <Tab icon={ProfileIcon}>Profile</Tab>
+          <Tab icon={ProfileIcon}>
+            {user && user.username ? user.username : "Profile"}
+          </Tab>
         </NavLink>
       </div>
     </div>

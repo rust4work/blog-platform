@@ -80,7 +80,7 @@ a {
 }
 
 .userinfo--container {
-  max-width: 1097px;
+  width: 100%;
   height: 348px;
   padding: 48px 16px;
   background-color: #333333;
@@ -418,5 +418,16 @@ a {
   button {
     align-self: end;
     margin-right: 10px;
+  }
+}
+
+.feeds {
+  max-width: 800px;
+  margin: 16px auto;
+  display: flex;
+  gap: 16px;
+  a {
+    border-bottom: 1px solid #aaaaaa;
+    color: #aaaaaa;
   }
 }

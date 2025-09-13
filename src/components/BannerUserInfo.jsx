@@ -1,25 +1,34 @@
-import React from "react";
-import Typography from "./helpers/Typography";
+import { useOutletContext, Navigate } from "react-router-dom";
 import Button from "./helpers/Button";
-import Checkers from "../assets/pics/Checkers.svg";
+import Typography from "./helpers/Typography";
 
-function BannerUserInfo({ user }) {
-  if (!user) return null;
+function BannerUserInfo() {
+  const { user, setUser } = useOutletContext();
+
+  if (!user) return <Navigate to="/sign-in" replace />;
+
   return (
     <div className="userinfo--container">
       {user.image ? (
-        <img src={user.image} alt={user.username} />
+        <img src={user.image} alt={user.username} className="profile-avatar" />
       ) : (
         <div className="default-avatar">👤</div>
       )}
-
       <Typography variant="h2" color="white">
         {user.username}
       </Typography>
 
-      <p style={{ color: "white" }}>{user.bio || "No bio yet"}</p>
+      <Button variant="secondary-small" withIcon={false}>
+        Edit profile
+      </Button>
 
-      <Button variant="secondaryLarge">Edit Profile</Button>
+      <Button
+        variant="warning-small"
+        withIcon={false}
+        onClick={() => setUser(null)}
+      >
+        Log out
+      </Button>
     </div>
   );
 }

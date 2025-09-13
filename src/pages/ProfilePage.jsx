@@ -2,34 +2,36 @@ import React, { useEffect, useState } from "react";
 import BannerUserInfo from "../components/BannerUserInfo";
 import Tab from "../components/helpers/Tab";
 import Sidebar from "../components/helpers/Sidebar";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useOutletContext } from "react-router-dom";
 
 function ProfilePage() {
-  const [user, setUser] = useState(null); // сюда сохраним данные пользователя
-  const [loading, setLoading] = useState(true);
+  const { user, setUser } = useOutletContext();
+  const [loading, setLoading] = useState(!user);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); // берём токен из localStorage
-    if (!token) {
-      setError("No token found, please log in");
+    if (user) {
       setLoading(false);
       return;
     }
 
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setLoading(false);
+      return; // редирект произойдет ниже
+    }
+
     fetch("https://realworld.habsida.net/api/user", {
-      method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Token ${token}`, // отправляем токен
+        Authorization: `Token ${token}`,
       },
     })
       .then(async (res) => {
         const data = await res.json();
-        if (!res.ok) {
+        if (!res.ok)
           throw new Error(data.errors?.body?.[0] || "Failed to fetch user");
-        }
-        setUser(data.user); // сохраняем данные пользователя
+        setUser(data.user);
         setLoading(false);
       })
       .catch((err) => {
@@ -37,24 +39,26 @@ function ProfilePage() {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [setUser, user]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div style={{ color: "red" }}>{error}</div>;
 
+  // Если user нет — редирект на sign-in
+  if (!user) return <Navigate to="/sign-in" replace />;
+
   return (
     <div>
-      <BannerUserInfo user={user} /> {/* передаём данные пользователя */}
+      <BannerUserInfo /> {/* теперь BannerUserInfo сам берет user из context */}
       <div className="feeds">
-        <NavLink to="/yourfeed">
+        <NavLink to="/profile-page/yourfeed">
           <Tab>Your feed</Tab>
         </NavLink>
-        <NavLink to="/notyourfeed">
+        <NavLink to="/profile-page/notyourfeed">
           <Tab>Not your feed</Tab>
         </NavLink>
       </div>
       <Sidebar />
-      {/* Пример рендера username, bio, email */}
     </div>
   );
 }
