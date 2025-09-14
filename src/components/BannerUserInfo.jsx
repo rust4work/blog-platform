@@ -16,11 +16,18 @@ function BannerUserInfo() {
   return (
     <div className="userinfo--container">
       {user.image ? (
-        <img src={user.image} alt={user.username} className="profile-avatar" />
+        <img
+          src={user.image}
+          alt={user.username}
+          className="profile-avatar"
+          onClick={clickHandler}
+        />
       ) : (
-        <div className="default-avatar">👤</div>
+        <div className="default-avatar" onClick={clickHandler}>
+          👤
+        </div>
       )}
-      <Typography variant="h2" color="white">
+      <Typography variant="h2" color="white" onClick={clickHandler}>
         {user.username}
       </Typography>
 

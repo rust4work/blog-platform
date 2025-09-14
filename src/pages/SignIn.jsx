@@ -58,8 +58,8 @@ function SignIn() {
         height="48px"
         {...register("email", { required: "Email is required" })}
       />
-      {errors.username && (
-        <span style={{ color: "red" }}>{errors.username.message}</span>
+      {errors.email && (
+        <span style={{ color: "red" }}>{errors.email.message}</span>
       )}
 
       <Input
@@ -74,6 +74,20 @@ function SignIn() {
       )}
 
       {loginError && <span style={{ color: "red" }}>{loginError}</span>}
+
+      <label className="personal-data--wrapper">
+        <input
+          type="checkbox"
+          id="personal-data"
+          {...register("personalData", {
+            required: "You must agree to personal data processing",
+          })}
+        />
+        <span>Agreeing to personal data processing</span>
+      </label>
+      {errors.personalData && (
+        <span style={{ color: "red" }}>{errors.personalData.message}</span>
+      )}
 
       <Button variant="primary-large" withIcon={false} type="submit">
         Sign in

@@ -452,3 +452,46 @@ a {
 .signin--wrapper :last-child {
   align-self: start;
 }
+
+.personal-data--wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #aaaaaa;
+  margin-top: 8px;
+  padding: 0 0 0 12px;
+
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #aaaaaa;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: #61bb61;
+    border-color: #61bb61;
+  }
+
+  input[type="checkbox"]:checked::after {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+  }
+
+  span {
+    user-select: none;
+  }
+}

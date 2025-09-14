@@ -7,14 +7,24 @@ const variants = {
   regularBold: { tag: "span", fontSize: "16px", fontWeight: "700" },
   regularGrey: { tag: "span", fontSize: "16px", fontWeight: "400" },
 };
-function Typography({ children, variant = "regular", color = "black" }) {
+
+function Typography({
+  children,
+  variant = "regular",
+  color = "black",
+  ...props
+}) {
   const {
     tag: Tag,
     fontSize,
     fontWeight,
   } = variants[variant] || variants.regular;
 
-  return <Tag style={{ fontSize, fontWeight, color }}>{children}</Tag>;
+  return (
+    <Tag style={{ fontSize, fontWeight, color }} {...props}>
+      {children}
+    </Tag>
+  );
 }
 
 export default Typography;
