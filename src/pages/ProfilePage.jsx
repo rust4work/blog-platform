@@ -44,8 +44,9 @@ function ProfilePage() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div style={{ color: "red" }}>{error}</div>;
 
-  // Если user нет — редирект на sign-in
   if (!user) return <Navigate to="/sign-in" replace />;
+
+  //posts
 
   return (
     <div>
@@ -59,6 +60,11 @@ function ProfilePage() {
         </NavLink>
       </div>
       <Sidebar />
+      {/* <div className="posts-container">
+        {posts.map((post) => (
+          <Post key={post.slug} postData={post} />
+        ))}
+      </div> */}
     </div>
   );
 }
