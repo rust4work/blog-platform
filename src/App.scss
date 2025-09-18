@@ -495,3 +495,22 @@ a {
     user-select: none;
   }
 }
+
+.input--wrapper input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  padding: 8px;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+
+  &:focus {
+    border-color: #61bb61; // синий при фокусе
+  }
+}
+
+.input--wrapper.input--error input {
+  border-color: red;
+  background-color: #ffecec; // мягкий розовый фон
+}

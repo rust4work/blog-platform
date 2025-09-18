@@ -5,17 +5,26 @@ import Button from "../components/helpers/Button";
 import Tag from "../components/helpers/Tag";
 
 function NewPost() {
+  const { user, loadingUser } = useOutletContext();
   const token = localStorage.getItem("token");
-  const { user } = useOutletContext();
   const navigate = useNavigate();
 
-  // состояния для формы
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [body, setBody] = useState("");
   const [tags, setTags] = useState([]);
 
-  // обработка сабмита
+  useEffect(() => {
+    fetch("https://realworld.habsida.net/api/tags")
+      .then((response) => response.json())
+      .then((data) => setTags(data.tags))
+      .catch((error) => console.error(error));
+  }, []);
+
+  if (loadingUser) return <div>Loading user...</div>;
+
+  if (!user) return <Navigate to="/sign-in" replace />;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -31,7 +40,7 @@ function NewPost() {
             title,
             description,
             body,
-            tagList: [], // можно прикрутить выбранные теги
+            tagList: [],
           },
         }),
       });
@@ -49,18 +58,6 @@ function NewPost() {
       console.error("Сеть упала:", err);
     }
   };
-
-  // загрузка доступных тегов
-  useEffect(() => {
-    fetch("https://realworld.habsida.net/api/tags")
-      .then((response) => response.json())
-      .then((data) => {
-        setTags(data.tags);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
-  if (!user) return <Navigate to="/sign-in" replace />;
 
   return (
     <div className="newpost--wrapper">

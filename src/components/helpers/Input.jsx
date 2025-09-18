@@ -4,10 +4,11 @@ function Input({
   placeholderText = "",
   width = "200px",
   height = "40px",
+  error = false,
   ...rest
 }) {
   return (
-    <div className="input--wrapper">
+    <div className={`input--wrapper ${error ? "input--error" : ""}`}>
       <input
         type="text"
         placeholder={placeholderText}

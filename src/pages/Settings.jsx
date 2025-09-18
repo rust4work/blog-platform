@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 import Typography from "../components/helpers/Typography";
 import Input from "../components/helpers/Input";
 import Button from "../components/helpers/Button";
+import Loader from "../components/helpers/Loader";
 
 function Settings() {
-  const { user, setUser } = useOutletContext();
+  const { user, setUser, loadingUser } = useOutletContext();
 
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
     reset,
   } = useForm({
@@ -33,6 +35,8 @@ function Settings() {
     }
   }, [user, reset]);
 
+  if (loadingUser) return <Loader />;
+
   if (!user) return <Navigate to="/sign-in" replace />;
 
   const onSubmit = async (formData) => {
@@ -46,11 +50,6 @@ function Settings() {
         image: formData.image,
       };
 
-      if (!payload.username || !payload.email) {
-        alert("Username and email are required");
-        return;
-      }
-
       const res = await fetch("https://realworld.habsida.net/api/user", {
         method: "PUT",
         headers: {
@@ -63,14 +62,36 @@ function Settings() {
       const result = await res.json();
 
       if (!res.ok) {
-        throw new Error("Failed to update profile");
+        if (result.errors) {
+          if (result.errors.body) {
+            const bodyMsg = result.errors.body[0] || "Failed to update profile";
+
+            if (bodyMsg.toLowerCase().includes("email")) {
+              setError("email", {
+                type: "server",
+                message: "This email is already taken",
+              });
+            } else if (bodyMsg.toLowerCase().includes("username")) {
+              setError("username", {
+                type: "server",
+                message: "This username is already taken",
+              });
+            } else {
+              setError("root", { type: "server", message: bodyMsg });
+            }
+          }
+        }
+        return;
       }
 
       setUser(result.user || result);
       alert("Profile updated successfully!");
     } catch (err) {
       console.error(err);
-      alert("Error updating profile: " + err.message);
+      setError("root", {
+        type: "server",
+        message: "Error updating profile: " + err.message,
+      });
     }
   };
 
@@ -90,9 +111,10 @@ function Settings() {
               value?.toString().trim().length > 0 || "Username cannot be empty",
           })}
           width="100%"
+          error={!!errors.username}
         />
         {errors.username && (
-          <span style={{ color: "red" }}>{errors.username.message}</span>
+          <p style={{ color: "red" }}>{errors.username.message}</p>
         )}
 
         <Input
@@ -106,10 +128,9 @@ function Settings() {
             },
           })}
           width="100%"
+          error={!!errors.email}
         />
-        {errors.email && (
-          <span style={{ color: "red" }}>{errors.email.message}</span>
-        )}
+        {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
 
         <textarea
           {...register("bio")}
@@ -121,7 +142,15 @@ function Settings() {
           placeholderText="Avatar image URL"
           {...register("image")}
           width="100%"
+          error={!!errors.image}
         />
+        {errors.image && <p style={{ color: "red" }}>{errors.image.message}</p>}
+
+        {errors.root && (
+          <div style={{ color: "red", marginTop: "8px" }}>
+            {errors.root.message}
+          </div>
+        )}
 
         <div className="form-buttons">
           <Button type="submit" withIcon={false}>
