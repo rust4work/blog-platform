@@ -49,19 +49,21 @@ function Post({ postData }) {
           {description}
         </Typography>
 
-        <div className="tags">
-          {tagList?.map((tag, i) => (
-            <Tag
-              key={i}
-              onClick={(e) => {
-                e.stopPropagation();
-                console.log("Клик по тегу:", tag);
-              }}
-            >
-              {tag}
-            </Tag>
-          ))}
-        </div>
+        {Array.isArray(tagList) && tagList.length > 0 && (
+          <div className="tags">
+            {tagList.map((tag, i) => (
+              <Tag
+                key={i}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  console.log("Клик по тегу:", tag);
+                }}
+              >
+                {tag}
+              </Tag>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
