@@ -27,6 +27,35 @@ function SinglePost() {
 
   const tags = post.tagList || [];
 
+  const token = localStorage.getItem("token");
+  const likeHandler = async () => {
+    if (!token) return alert("You must be logged in to favourite an article");
+
+    try {
+      const res = await fetch(
+        `https://realworld.habsida.net/api/articles/${slug}/favorite`,
+        {
+          method: post.favorited ? "DELETE" : "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error("Ошибка лайка:", errorData);
+        return;
+      }
+
+      const data = await res.json();
+      setPost(data.article);
+    } catch (err) {
+      console.error("Сеть упала:", err);
+    }
+  };
+
   return (
     <>
       <BannerArticle article={post} />
@@ -45,8 +74,14 @@ function SinglePost() {
               userImage={post.author.image}
               userDate={new Date(post.createdAt).toLocaleDateString()}
             />
-            <Button variant="primary-small" withIcon={false}>
-              Favourite Article
+            <Button
+              variant={post.favorited ? "warning-small" : "primary-small"}
+              withIcon={false}
+              onClick={likeHandler}
+            >
+              {post.favorited
+                ? `Unfavourite (${post.favoritesCount})`
+                : `Favourite (${post.favoritesCount})`}
             </Button>
           </div>
         )}

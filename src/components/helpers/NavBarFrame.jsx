@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Tab from "./Tab";
-import NewPostIcon from "../../assets/pics/NewPostIcon.svg";
+import NewPostIcon from "../../assets/pics/newPostIcon.svg";
 import SettingsIcon from "../../assets/pics/settingsIcon.svg";
 import ProfileIcon from "../../assets/pics/iconProfile.svg";
 
