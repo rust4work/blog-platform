@@ -30,6 +30,7 @@ function SinglePost() {
   return (
     <>
       <BannerArticle article={post} />
+
       <div className="single-post--wrapper">
         <Typography variant="regular">{post.body}</Typography>
         <div className="tagList">

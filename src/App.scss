@@ -51,6 +51,20 @@ a {
   justify-self: start;
   margin: 0 auto;
   width: 800px;
+  display: flex;
+  flex-direction: column;
+
+  .buttons--wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+
+    button {
+      width: 120px;
+      height: 40px;
+    }
+  }
 }
 
 .bannerArticle--wrapper h1 {
@@ -336,6 +350,7 @@ a {
   justify-self: center;
   margin-top: 32px;
   display: flex;
+
   gap: 24px;
 }
 
@@ -506,7 +521,7 @@ a {
     background-color 0.2s;
 
   &:focus {
-    border-color: #61bb61; // синий при фокусе
+    border-color: #61bb61;
   }
 }
 

@@ -14,6 +14,7 @@ import Settings from "./pages/Settings";
 import SinglePost from "./pages/SinglePost";
 import SignUpPage from "./pages/SignUpPage";
 import SignIn from "./pages/SignIn";
+import EditPage from "./pages/EditPage";
 
 // layout
 import RootLayout from "./layouts/RootLayout";
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="sign-up" element={<SignUpPage />} />
       <Route path="sign-in" element={<SignIn />} />
       <Route path="article/:slug" element={<SinglePost />} />
+      <Route path="article/:slug/edit" element={<EditPage />} />
 
       <Route path="profile-page" element={<ProfilePage />} />
 

@@ -3,14 +3,14 @@ import Button from "./helpers/Button";
 import Typography from "./helpers/Typography";
 
 function BannerUserInfo() {
-  const { user, setUser } = useOutletContext();
+  const { user } = useOutletContext();
 
   const navigate = useNavigate();
 
   if (!user) return <Navigate to="/sign-in" replace />;
 
   const clickHandler = () => {
-    navigate("/settings");
+    navigate("/profile-page");
   };
 
   return (
@@ -32,15 +32,7 @@ function BannerUserInfo() {
       </Typography>
 
       <Button variant="secondary-small" withIcon={false} onClick={clickHandler}>
-        Edit profile
-      </Button>
-
-      <Button
-        variant="warning-small"
-        withIcon={false}
-        onClick={() => setUser(null)}
-      >
-        Log out
+        follow
       </Button>
     </div>
   );
