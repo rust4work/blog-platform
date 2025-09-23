@@ -47,6 +47,7 @@ function ProfilePage() {
   if (!user) return <Navigate to="/sign-in" replace />;
 
   //posts
+  useEffect;
 
   return (
     <div>
@@ -60,11 +61,7 @@ function ProfilePage() {
         </NavLink>
       </div>
       <Sidebar />
-      {/* <div className="posts-container">
-        {posts.map((post) => (
-          <Post key={post.slug} postData={post} />
-        ))}
-      </div> */}
+      <div className="personal-posts"></div>
     </div>
   );
 }
