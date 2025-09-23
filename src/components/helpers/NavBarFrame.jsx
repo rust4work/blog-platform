@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Tab from "./Tab";
 import NewPostIcon from "../../assets/pics/NewPostIcon.svg";
-import SettingsIcon from "../../assets/pics/settingsIcon.svg";
+import SettingsIcon from "../../assets/pics/SettingsIcon.svg";
 import ProfileIcon from "../../assets/pics/IconProfile.svg";
 
 function NavBarFrame({ user }) {
