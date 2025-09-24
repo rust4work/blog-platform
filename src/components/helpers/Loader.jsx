@@ -1,5 +1,5 @@
 import React from "react";
-import refresher from "../../assets/pics/refresh.svg";
+import refresher from "../../assets/pics/Refresh.svg";
 
 function Loader() {
   return (
