@@ -1,9 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Tab from "./Tab";
-import NewPostIcon from "../../assets/pics/NewPostIcon.svg";
-import SettingsIcon from "../../assets/pics/SettingsIcon.svg";
-import ProfileIcon from "../../assets/pics/IconProfile.svg";
+
+import NewPostIcon from "../../assets/pics/NewPostIcon.svg?url";
+import SettingsIcon from "../../assets/pics/SettingsIcon.svg?url";
+import ProfileIcon from "../../assets/pics/IconProfile.svg?url";
 
 function NavBarFrame({ user }) {
   return (
@@ -36,9 +37,7 @@ function NavBarFrame({ user }) {
           to="/profile-page"
           className={({ isActive }) => (isActive ? "active" : "")}
         >
-          <Tab icon={ProfileIcon}>
-            {user && user.username ? user.username : "Profile"}
-          </Tab>
+          <Tab icon={ProfileIcon}>{user?.username ?? "Profile"}</Tab>
         </NavLink>
       </div>
     </div>

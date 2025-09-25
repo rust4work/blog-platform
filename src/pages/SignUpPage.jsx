@@ -77,7 +77,11 @@ function SignUpPage() {
           placeholderText="UserName"
           width="480px"
           height="48px"
-          {...register("username", { required: "Enter username" })}
+          {...register("username", {
+            required: "Enter username",
+            minLength: { value: 3, message: "Minimum  3 character" },
+            maxLength: { value: 20, message: "Maximum  20 character" },
+          })}
           error={!!errors.username}
         />
         {errors.username && (
@@ -107,6 +111,7 @@ function SignUpPage() {
           {...register("password", {
             required: "Enter password",
             minLength: { value: 6, message: "Minimum 6 characters" },
+            maxLength: { value: 40, message: "Maximum 40 characters" },
           })}
           error={!!errors.password}
         />

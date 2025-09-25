@@ -7,8 +7,9 @@ function BannerArticle({ article }) {
   const navigate = useNavigate();
   if (!article) return null;
 
+  const token = localStorage.getItem("token");
+
   const handleDelete = async () => {
-    const token = localStorage.getItem("token");
     if (!window.confirm("Are you sure you want to delete this article?")) {
       return; // если нажали Cancel — просто выходим
     }
@@ -49,22 +50,24 @@ function BannerArticle({ article }) {
           userImage={article.author.image}
           userDate={new Date(article.createdAt).toLocaleDateString()}
         />
-        <div className="buttons--wrapper">
-          <Button
-            variant="secondary-small"
-            withIcon={false}
-            onClick={handleEdit}
-          >
-            Edit post
-          </Button>
-          <Button
-            variant="warning-small"
-            withIcon={false}
-            onClick={handleDelete}
-          >
-            Delete post
-          </Button>
-        </div>
+        {token && (
+          <div className="buttons--wrapper">
+            <Button
+              variant="secondary-small"
+              withIcon={false}
+              onClick={handleEdit}
+            >
+              Edit post
+            </Button>
+            <Button
+              variant="warning-small"
+              withIcon={false}
+              onClick={handleDelete}
+            >
+              Delete post
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
